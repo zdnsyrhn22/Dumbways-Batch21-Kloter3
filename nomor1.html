@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal Nomor 1</title>
+
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/1.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div>Soal Nomor</div>
+            <div class="list">
+                <a class="active">1</a>
+                <a href='./nomor2.html'>2</a>
+                <a href='./nomor3.html'>3</a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="question">
+                <div class="number">1.</div>
+                <div>Buatlah sebuah function sederhana untuk mengecek huruf awal setiap kata dari paramater yang
+                    diberikan.</div>
+            </div>
+            <div class="params__container" style="margin-top: 60px;">
+                <div style="margin-bottom: 10px;">Parameters :</div>
+                <textarea id='params__textarea'
+                    rows="3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</textarea>
+            </div>
+            <div class="button__container" style="margin-top: 30px;">
+                <div onclick="OnSubmit()">Submit</div>
+                <div onclick="OnReset()">Reset</div>
+            </div>
+            <div class="output__container">
+                <div style="margin-bottom: 10px;">Output :</div>
+                <div class="result__container">
+                    <div class="result__params" style="margin-bottom: 15px;">
+                        <div>Params:</div>
+                        <div id="params"></div>
+                    </div>
+                    <div class="result">
+                        <div>Result:</div>
+                        <div id="result"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function checkKalimat(params) {
+        let splited = params.split(" ");
+        let result = splited.map(str => str.substring(0, 1));
+        return result;
+    }
+
+    const defaultParams = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+
+    const OnReset = () => { document.getElementById('params__textarea').value = defaultParams; };
+
+    const OnSubmit = () => {
+        let params = document.getElementById('params__textarea').value;
+
+        if (params == null) {
+            document.getElementById('params').innerHTML = null;
+            document.getElementById('result').innerHTML = null;
+        }
+
+        document.getElementById('params').innerHTML = params;
+        document.getElementById('result').innerHTML = checkKalimat(params);
+    };
+</script>
+
+</html>

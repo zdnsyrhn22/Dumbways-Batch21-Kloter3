@@ -1,0 +1,30 @@
+#params__textarea,
+.result__container {
+  background-color: #777;
+  border: 10px solid #555;
+  border-radius: 0 15px 0 15px;
+  color: #fff;
+  font-family: OpenSans;
+  font-size: 0.9rem;
+  max-width: 1150px;
+  padding: 15px;
+  width: 1150px;
+}
+
+#params__textarea:focus {
+  border-color: orange;
+}
+.result__container {
+  max-width: none;
+}
+
+#params,
+#result {
+  font-weight: 400;
+  margin-left: 15px;
+}
+
+.result,
+.result__params {
+  display: flex;
+}

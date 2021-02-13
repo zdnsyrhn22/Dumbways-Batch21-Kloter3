@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal Nomor 2</title>
+
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/2.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div>Soal Nomor</div>
+            <div class="list">
+                <a href='./nomor1.html'>1</a>
+                <a class="active">2</a>
+                <a href='./nomor3.html'>3</a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="question">
+                <div class="number">2.</div>
+                <div>Buatlah sebuah function untuk mencari median dari sebuah array.</div>
+            </div>
+            <div class="params__container" style="margin-top: 60px;">
+                <div style="margin-bottom: 10px;">Parameters :</div>
+                <div id="params__list">
+                </div>
+            </div>
+            <div class="input__container">
+                <input id="input" type="number">
+                <div onclick="OnAdd()">Add</div>
+                <div onclick="OnRemove()">Remove Last</div>
+                <div onclick="OnRemoveAll()">Remove All</div>
+            </div>
+            <div class="button__container" style="margin-top: 30px;">
+                <div onclick="OnSubmit()">Submit</div>
+                <div onclick="OnReset()">Reset</div>
+            </div>
+            <div class="output__container">
+                <div>Output :</div>
+                <div id='output'></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    console.log(5 / 2);
+
+    function cekMedian(params) {
+        let median = null;
+        let isOdd = params.length % 2;
+        let sorted = params.sort();
+
+        if (isOdd == 1) {
+            median = sorted[Math.floor(params.length / 2)];
+        } else {
+            let index = params.length / 2;
+            median = sorted[index - 1];
+            median += sorted[index];
+            median /= 2;
+        }
+
+        return "Median dari array tersebut adalah " + median + ".";
+    }
+
+    const refresh = () => {
+        document.getElementById('params__list').innerHTML = "";
+        params.map(p => {
+            document.getElementById('params__list').innerHTML += "<div>" + p + "<div>";
+        });
+    };
+
+    const defaultParams = [0, 1, 2, 4, 6, 5, 3];
+    var params = [...defaultParams];
+    refresh();
+
+    const OnAdd = () => {
+        let input = document.getElementById("input").value;
+
+        if (!isNaN(parseInt(input))) {
+            params.push(parseInt(input));
+            document.getElementById("input").value = null;
+            refresh();
+        }
+    };
+
+    const OnRemove = () => {
+        params.pop();
+        refresh();
+    };
+
+    const OnRemoveAll = () => {
+        params = [];
+        refresh();
+    };
+
+    const OnReset = () => {
+        params = [...defaultParams];
+        refresh();
+    };
+
+    const OnSubmit = () => {
+        document.getElementById('output').innerHTML = cekMedian(params);
+    };
+</script>
+
+</html>
